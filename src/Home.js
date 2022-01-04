@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Weather from './Weather';
 const Home = () => {
     const [location, setLocation] = useState("london");
@@ -7,7 +7,6 @@ const Home = () => {
     var url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=f66c0adfdefec0b278a608ed542c3264&units=metric`;
     const [ispending, setIspending] = useState(false);
     const [error, setError] = useState(null);
-    const msg="pending";
     const search = () => {
         setIspending(true);
         console.log(`search ${location}`);
