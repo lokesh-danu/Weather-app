@@ -4,7 +4,7 @@ const Home = () => {
     const [location, setLocation] = useState("london");
     // const [takeinput, setTakeinput] = useState("Enter here");
     const [data, setData] = useState(null);
-    var url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=f66c0adfdefec0b278a608ed542c3264&units=metric`;
+    var url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=f66c0adfdefec0b278a608ed542c3264&units=metric`;
     const [ispending, setIspending] = useState(false);
     const [error, setError] = useState(null);
     const search = () => {
