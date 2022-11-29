@@ -39,14 +39,15 @@ const Home = () => {
         setCountry(res.data.data);
         
       })
+      search();
     }, [])
-    console.log(country);
-    
+    // console.log(country);
     return (
         <div className="home">
             <div className="searchbar">
                 <select onChange={ e=>{
                     setLocation(e.target.value);
+                    search();
                 }}
                 className="select"
                 >
@@ -61,8 +62,8 @@ const Home = () => {
                     }
                 </select>
                 {/* {location}; */}
-                {ispending && <button disabled className="btn">Searching..</button> }
-                {!ispending&&<button className="btn" onClick={search}>Search</button>}
+                {/* {ispending &&  }
+                {!ispending&&<} */}
             </div>
             {error && <div className="error"><h1>Invalid Name</h1></div> }
             {data && <Weather data={data}></Weather>}

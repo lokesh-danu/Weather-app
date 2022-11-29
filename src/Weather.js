@@ -26,13 +26,13 @@ const Weather = (props) => {
     return ( 
         <div className="weather">
             <div className="card temp">
-                <p>Temperature : {temp}</p>
-                <p>Max : {maxtemp}</p>
-                <p>Min : {mintemp}</p>
-                <p>Feels Like : {feelslike}</p>
+                <p>Temperature : {temp}<span>&#176;</span></p>
+                <p>Max : {maxtemp}<span>&#176;</span></p>
+                <p>Min : {mintemp}<span>&#176;</span></p>
+                <p>Feels Like : {feelslike}<span>&#176;</span></p>
             </div>
             <div className="card wind">
-                <p>Wind speed : {wind}</p>
+                <p>Wind speed : {wind}<span>km/h</span></p>
             </div>
             <div className="card">
                 <p>Humidity: {humidity}</p>
