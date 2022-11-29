@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState ,useEffect } from "react";
 import Weather from './Weather';
+import axios from "axios";
 const Home = () => {
-    const [location, setLocation] = useState("london");
+    const [country, setCountry] = useState([]);
+    const cntryUrl="https://countriesnow.space/api/v0.1/countries";
+    const [location, setLocation] = useState("Afghanistan");
     // const [takeinput, setTakeinput] = useState("Enter here");
     const [data, setData] = useState(null);
-    var url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=f66c0adfdefec0b278a608ed542c3264&units=metric`;
+    var url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=794ee95e63c5a32aaf88cd813fa2e425`;
     const [ispending, setIspending] = useState(false);
     const [error, setError] = useState(null);
     const search = () => {
@@ -19,7 +22,6 @@ const Home = () => {
                 return res.json();
             }
         }).then(data => {
-            console.log(data);
             setData(data);
             setIspending(false);
             setError(null);
@@ -30,15 +32,35 @@ const Home = () => {
             console.log(err);
         })
     }
-
-
+    useEffect(() => {
+    
+      axios.get(cntryUrl).then( res=>{
+        console.log(res.data.data);
+        setCountry(res.data.data);
+        
+      })
+    }, [])
+    console.log(country);
+    
     return (
         <div className="home">
             <div className="searchbar">
-                <input className="input" type="text"
-                    value={location}
-                    onChange={e => { setLocation(e.target.value) }}
-                />
+                <select onChange={ e=>{
+                    setLocation(e.target.value);
+                }}
+                className="select"
+                >
+                    {
+                        country.map( el=>{
+                            return (
+                                <>
+                                <option value={el.country} key ={el.county} className="option"> {el.country} </option>
+                                </>
+                            )
+                        })
+                    }
+                </select>
+                {/* {location}; */}
                 {ispending && <button disabled className="btn">Searching..</button> }
                 {!ispending&&<button className="btn" onClick={search}>Search</button>}
             </div>

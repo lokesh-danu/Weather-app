@@ -34,10 +34,11 @@
   border-radius: 8px;
 }
 .btn{
-  height: 55px;
-  font-size: inherit;
-  background-color: rgb(226, 98, 48);
-  border-radius: 8px;
+  height: 44px;
+    font-size: inherit;
+    background-color: rgb(226, 98, 48);
+    border-radius: 8px;
+    margin: 10px;
 }
 .weather{
   margin: 50px 0;
@@ -54,4 +55,14 @@
   padding: 10px;
   width: fit-content;
   padding: 15px;
+}
+
+.select{
+  width: 25vw;
+    height: 43px;
+    border-radius: 15px;
+}
+.option{
+  padding: 2px 15px;
+  font-size: 23px;
 }

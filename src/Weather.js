@@ -10,12 +10,17 @@ const Weather = (props) => {
     const [mintemp, setMintemp] = useState(null);
     const [pressure, setPressure] = useState(null);
     useEffect(() => {
-        setTemp(data.main.temp);
-        setHumidity(data.main.humidity);
-        setFeelslike(data.main.feels_like);
-        setWind(data.wind.speed);
-        setMaxtemp(data.main.temp_max);
-        setMintemp(data.main.temp_min);
+        console.log(data);
+        var temp=Math.trunc(data.main.temp-273.15);
+        var wind=data.wind.speed;
+        var hum=data.main.humidity;
+        console.log(temp);
+        setTemp(temp);
+        setHumidity(hum);
+        setFeelslike(Math.trunc(data.main.feels_like-273.15));
+        setWind(wind);
+        setMaxtemp(Math.trunc(data.main.temp_max-273.15));
+        setMintemp(Math.trunc(data.main.temp_min-273.15));
         setPressure(data.main.pressure);
     }, [data])
     return ( 
